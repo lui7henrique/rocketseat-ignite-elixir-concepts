@@ -24,7 +24,7 @@ defmodule ReportsGenerator do
   end
 
   # "report_complete.csv" |> ReportsGenerator.build() |> ReportsGenerator.fetch_higher_cost()
-  def fetch_higher_cost(report, option) when option in @options do
+  def fetch_higher_cost(report, option) when is_nil(option) do
     {:ok, Enum.max_by(report[option], fn {_key, value} -> value end)}
   end
 
